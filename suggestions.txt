@@ -1,0 +1,14 @@
+
+
+* Code is a little old and using langchain older version and not langgraph but
+  it is worth taking a look at this repo
+
+  https://github.com/andrewnguonly/ReviewsGPT/blob/main/src/main.py
+
+  That given a yelp URL for a restuarant scrapes context into a ChromaDB
+
+
+
+* exfunc is one of those services that claim to be able to do scraping for you of sites the officially do not allow scraping (like X.com and yelp) - so not sure how workable this is but
+ https://www.exfunc.com/blog/ai-yelp-agent
+
