@@ -6,49 +6,169 @@
 
 **Final Project Proposal:** 
 
-**Idea:** Build a RAG with restaurant data from University City.
+**Idea:**  
+Build a RAG system that provides personalized restaurant recommendations using data from University City. The system will use manually collected restaurant data from Yelp and Google Reviews to assist users in making informed dining decisions based on various contexts such as urgency, social setting, and budget. This tool will enhance the dining experience by providing real-time, context-aware suggestions tailored to individual user preferences. Whether a user is looking for a quick meal, planning a date, or organizing a group outing, the system will curate a list of suitable restaurants based on user input. With structured restaurant data and retrieval methods, the RAG system will make accurate, relevant, and aligned recommendations.
 
-**Users:**
+The key feature of this system is its ability to understand nuanced user preferences and/or constraints. For example, a user in a rush might prioritize proximity and speed of service, while a group planning an evening out might care more about ambiance and availability of group seating. By leveraging NLPs and contextual retrieval, the system will adapt to these varying requirements, offering an efficient experience rather than scrolling through Yelp and Google Reviews for hours. This project aims to bridge the gap between AI driven search and personalized recommendations like those of Yelp and Google Reviews, providing an innovative tool that enhances the restaurant decision making process for users in University City.
 
-	**Flow 1 \- Hungry Eater(s)**
+**Project Summary:** 
+For our final project, we’re building a restaurant recommendation tool that helps people quickly and easily decide where to eat in University City. The app uses RAG, to suggest restaurants based on different situations like being in a rush, planning a date, or organizing a group dinner.
+
+We’re collecting data ourselves and using LLMs (GPT 4o) to assist us in the process. structuring it in a clean format, and then connecting it to a system powered by IBM Watsonx. The end result is a tool that doesn’t just throw a list of restaurants at users but instead understands what they’re looking for and gives recommendations that actually make sense for their situation.
+
+**Project Goals:**
+- Create a system that feels helpful without feeling overwhelming
+- Make dining decisions faster and with more confidence
+- Give personalized suggestions based on mood, budget, group size, or vibe
+- Show how AI tools like Watsonx can be used in everyday decision making
+- See how different prompts change the responses we get from the system
+
+**Users Scenarios:**
+
+We’ve created five user types that represent the kinds of situations UPenn students often face when trying to find somewhere to eat. Each one has a different goal...
+
+	**Flow 1 \- The Hungry Eater: I need food now!**
 
 - User needs food asap  
 - User searches for place based on what they have’t had in a while  
-- Goes to closest place
+- User goes to closest place
 
+Example:
+- Jordan just finished a long night of studying and needs food ASAP
+- Jordan opens the app and searches Food I can get fast
+- The system checks Jordan's location and recent dining history
+- It shows nearby spots that are open and not too busy
 	  
-	**Flow 2 \- New Relationship / Wanting to Impress**
+	**Flow 2 \- The Impression Maker: I hope they like it!**
 
-- User explain relationship  
-- Provides details about who they want to impress  
-- Provides a budget  
-- Makes reservation / plan
+- User explains relationship  
+- User provides details about who they want to impress  
+- user provides a budget  
+- User makes reservation / plan
 
-	**Flow 3 \- Group going out**
+Example:
+- Alex is planning a one month anniversary dinner and wants it to be memorable but not too expensive
+- Alex enters a few details like the relationship type, vibe, and budget
+- The system looks at reviews and ambiance notes
+- It recommends places that are romantic but still within budget
+
+	**Flow 3 \- The Group Planner: Let's go out guys!**
 
 - Group is formed  
 - User communicates vibe / occasion  
 - User communicates budget  
-- Makes reservation / plan
+- User makes reservation / plan
 
-	  
-		  
+Example:
+- Maya and her friends want dinner before a concert
+- Maya inputs the group size, occasion, cuisine and vibe
+- The app finds places with group seating and availability that fits her criteria
+
+	**Flow 4 \- The Foodie Explorer Planner: I want to go somewhere new!**
+
+- User is sick of their usual spots, want to try something new, user communicates this  
+- User communicates budget  
+- User makes reservation / plan
+
+Example:
+- Chris loves finding cool, hidden food spots
+- Chris tells the Rag he wants something unique and not too popular
+- The system finds places with fewer crowds with good reviews
+
+	**Flow 5 \- The Budget Conscious Diner: I want to go somewhere cheap!**
+
+- User is tught on money but wants/has to eat out, user communicates this  
+- User communicates budget  
+- User makes reservation / plan
+
+Example:
+- Taylor is trying to stick to a budget but still wants good food
+- Taylor sets a price limit and communicates a meal type
+- The system finds affordable spots with good ratings, it also shows places with student discounts or deals
+            
+**GPTed User Journeys:**  
+
+**1\. The Hungry Eater**  
+Scenario: Jordan, a busy college student, just finished a late night study session and is starving. They want to grab something quick but don’t want to repeat meals they’ve had recently.
+
+User Journey:
+- Jordan opens the app and selects “Find Food Fast”
+- The system asks if they have any preferences or dietary restrictions. Jordan skips this step since they just want something different from their recent meals
+- The RAG system retrieves their past dining history and suggests nearby places they haven’t visited recently
+- Based on their location, the rag sorts options by proximity and estimated wait time
+- Jordan selects a restaurant from this and gets yummy food quickly!
+
+**2\. The ImpressionMaker"**  
+Scenario: Alex wants to take their new partner, Sam, on a dinner date to celebrate their one-month anniversary. They want a place that is romantic but within a reasonable budget.
+
+User Journey:
+- Alex tells the rag he wants to “Impress Someone”, he provides details about their relationship (e.g., early dating stage, casual but meaningful)
+- the rag asks about the preferred cuisine type, atmosphere (e.g., quiet and intimate vs. lively), and budget
+- the rag analyzes restaurant reviews, ambiance descriptions, and price ranges to suggest ideal options
+- alex selects a restaurant from here and has a lovely night out with his girlfriend
+
+**3\. The Group Planner**  
+Scenario: Maya and her friends want to go out for dinner before a concert. They need a place that can accommodate six people, fits their budget, and has a fun vibe.
+
+User Journey:
+- Maya tells the rag she wants to “Plan for a Group” 
+- he enters the number of people in the group and the occasion (e.g., pre concert dinner).
+- he rag prompts her to select a preferred cuisine, budget constraints and whether they need a place with reservations
+- the rag then finds restaurants that fit the criteria, sorts them by availability, and provides reservation options
+- maya books a spot and has an awesome night with her friends
+
+**4\. The Foodie Explorer**  
+Scenario: Chris, a self proclaimed foodie, loves discovering hidden gems and highly rated but lesser known spots. He wants a unique dining experience in University City.
+
+User Journey:
+- Chris tells the rag he wants to “Find a Hidden Gem” 
+- he then tells it he wants unique or highly rated but less reviewed places
+- the rag filters out overly popular restaurants and highlights places with strong but limited reviews
+- the rag then provides a brief description of each place’s standout dishes or features
+- chris picks a restaurant from here and shares their experience afterward, contributing new data to the system
+
+**5\. The Budget Conscious Diner**  
+Scenario: Taylor, a college student on a tight budget, wants to find a good meal that is affordable but still tasty.
+
+User Journey:
+- Taylor tells the rag she wants the “Best Meal on a Budget”
+- she enters their maximum budget per person
+- the rag then asks if they’re looking for full meals, snacks, or happy hour deals
+- the rag system sorts restaurants by value, highlighting student discounts, specials, or highly rated cheap eats
+- taylor picks a place from here and enjoys a great meal without breaking the bank
+
 **Implementation:**  
 **Phase 1 | Data Collection**
 
-- Manual Collection via Yelp/Google Reviews (finite number of restaurants)  
-- Format data (Google Sheets / Excel)
+- We’re collecting restaurant data including cuisine, pricing, vibe, and special features, we used 4o to help us do this. We gave it the list of restuarents in University City we formulated and asked it questions like "Tell me if these restuarants are BYOB or not?" to help us make our google sheet of data.
+- Then we organized everything in a google sheet so it's easy to use and implement into the RAG later
 
   **Phase 2 | RAG Setup via WatsonFlows**
 
-  Relevant link: [https://developer.ibm.com/tutorials/awb-build-rag-application-watsonx-ai-flows-engine/](https://developer.ibm.com/tutorials/awb-build-rag-application-watsonx-ai-flows-engine/)
+We’re using Watsonx to connect our restaurant data to an AI system. The AI can take user input and fetch the best results based on what people want. It’s able to consider things like timing, budget, group size, and preferences before ranking the most relevant options and presenting them in a helpful way.
+
+Relevant link: [https://developer.ibm.com/tutorials/awb-build-rag-application-watsonx-ai-flows-engine/](https://developer.ibm.com/tutorials/awb-build-rag-application-watsonx-ai-flows-engine/)
+
+
+**Prompting Experiments & Development:**
+
+* Experiment with different prompting strategies for Watsonx to refine query responses (ie “What’s a quiet place for a study date under $30?” vs “Suggest a fancy Italian restaurant”)  
+* Fine tune retrieval mechanisms to balance relevancy and diversity in recommendations 
+* Test user interactions with different user flows to refine response accuracy and user satisfaction
+
+**Prompt Testing**
+We tested out different ways of asking questions to see how the system responds. Here’s what we found:
+- Formal vs casual questions give different tones in the results
+- Example: “Where can I take someone on a date under 50 dollars?” vs “What’s a cute date spot that isn’t too expensive?”
+- Open ended questions return more variety but sometimes less accuracy
+- Specific questions help the system be more precise, especially with budget and vibe
 
 **Potential Challenges:**
 
-- Poor quality based on available data  
-- Thoughts on dining can be subjective  
-- Individual Data Scraping  
-- 
+- Poor quality based on available data: Not all restaurant info online is complete or up to date
+- Dining can be subjective: People have different opinions and expectations when it comes to food
+- Individual Data Scraping from sites needs to be done carefully 
+- New users won’t have a dining history, so suggestions might be less personal at first
 
 **Alternative Approaches:**  
 Build a RAG with data from:
@@ -57,146 +177,7 @@ Build a RAG with data from:
 - Other Penn Agencies / Clubs  
 - Data local to Philadelphia (Housing / Crime)
 
-**GPTed User Scenarios:**  
-**1\. The Hungry Eater – "I Need Food Now"**  
-Scenario: Jordan, a busy college student, just finished a late-night study session and is starving. They want to grab something quick but don’t want to repeat meals they’ve had recently.
 
-User Journey:
-
-Jordan opens the app and selects “Find Food Fast.”
-
-The system asks if they have any preferences or dietary restrictions. Jordan skips this step since they just want something different from their recent meals.
-
-The RAG system retrieves their past dining history and suggests nearby places they haven’t visited recently.
-
-Based on their location, the app sorts options by proximity and estimated wait time.
-
-Jordan selects a restaurant and heads there immediately.
-
-**2\. The Impression-Maker – "Planning a Special Date"**  
-Scenario: Alex wants to take their new partner, Sam, on a dinner date to celebrate their one-month anniversary. They want a place that is romantic but within a reasonable budget.
-
-User Journey:
-
-Alex chooses “Impress Someone” in the app.
-
-They provide details about their relationship (e.g., early dating stage, casual but meaningful).
-
-The app asks about the preferred cuisine type, atmosphere (e.g., quiet and intimate vs. lively), and budget.
-
-The RAG system analyzes restaurant reviews, ambiance descriptions, and price ranges to suggest ideal options.
-
-Alex selects a restaurant and books a reservation through the app.
-
-**3\. The Group Planner – "Coordinating a Night Out"**  
-Scenario: Maya and her friends want to go out for dinner before a concert. They need a place that can accommodate six people, fits their budget, and has a fun vibe.
-
-User Journey:
-
-Maya selects “Plan for a Group” in the app.
-
-She enters the number of people in the group and the occasion (e.g., pre-concert dinner).
-
-The app prompts her to select a preferred cuisine or let the group vote.
-
-It also asks for budget constraints and whether they need a place with reservations.
-
-The RAG system finds restaurants that fit the criteria, sorts them by availability, and provides reservation options.
-
-Maya books a spot and shares the details with her friends.
-
-**4\. The Foodie Explorer – "Trying Something New"**  
-Scenario: Chris, a self-proclaimed foodie, loves discovering hidden gems and highly rated but lesser-known spots. They want a unique dining experience in University City.
-
-User Journey:
-
-Chris selects “Find a Hidden Gem” in the app.
-
-They set preferences for unique or highly rated but less-reviewed places.
-
-The RAG system filters out overly popular restaurants and highlights places with strong but limited reviews.
-
-The app provides a brief description of each place’s standout dishes or features.
-
-Chris picks a restaurant and shares their experience afterward, contributing new data to the system.
-
-**5\. The Budget-Conscious Diner – "Best Meal for the Best Price"**  
-Scenario: Taylor, a college student on a tight budget, wants to find a good meal that is affordable but still tasty.
-
-User Journey:
-
-Taylor selects “Best Meal for My Budget.”
-
-They enter their maximum budget per person.
-
-The app asks if they’re looking for full meals, snacks, or happy hour deals.
-
-The RAG system sorts restaurants by value, highlighting student discounts, specials, or highly rated cheap eats.
-
-Taylor picks a place and enjoys a great meal without breaking the bank.
-
-**Final Project Proposal**
-
-**Idea:**  
-Build a RAG system that provides personalized restaurant recommendations using data from University City. The system will use manually collected restaurant data from Yelp and Google Reviews to assist users in making informed dining decisions based on various contexts such as urgency, social setting, and budget. This tool will enhance the dining experience by providing real-time, context-aware suggestions tailored to individual user preferences. Whether a user is looking for a quick meal, planning a date, or organizing a group outing, the system will curate a list of suitable restaurants based on user input. With structured restaurant data and retrieval methods, the RAG system will make accurate, relevant, and aligned recommendations.
-
-The key feature of this system is its ability to understand nuanced user preferences and/or constraints. For example, a user in a rush might prioritize proximity and speed of service, while a group planning an evening out might care more about ambiance and availability of group seating. By leveraging NLPs and contextual retrieval, the system will adapt to these varying requirements, offering an efficient experience rather than scrolling through Yelp and Google Reviews for hours. This project aims to bridge the gap between AI driven search and personalized recommendations like those of Yelp and Google Reviews, providing an innovative tool that enhances the restaurant decision making process for users in University City.
-
-**User Scenarios:**
-
-**Flow 1 \- Hungry Eater(s)**
-
-* User needs food immediately.  
-* Searches for restaurants based on cuisine they haven't had in a while.  
-* Gets suggestions and navigates to the closest available option.
-
-**Flow 2 \- New Relationship / Wanting to Impress**
-
-* User explains the nature of the relationship (e.g., date, boss, in-laws).  
-* Provides details about the person they want to impress.  
-* Sets a budget.  
-* Receives tailored restaurant suggestions and makes a reservation or plan.
-
-**Flow 3 \- Group Going Out**
-
-* A group is formed, and preferences are gathered.  
-* Users specify the vibe (e.g., casual, fancy, lively) and occasion (e.g., birthday, celebration).  
-* Users provide a budget range.  
-* The system recommends places that fit the criteria, and a reservation is made.
-
-**Implementation Phases:**
-
-**Phase 1 | Data Collection**
-
-* Manually collect restaurant data from Yelp and Google Reviews  
-* Store data in a structured format (Google Sheets/Excel)  
-* Label key attributes such as cuisine type, pricing, ambiance, and user sentiment
-
-**Phase 2 | RAG Setup via Watsonx Flows**
-
-* Set up a RAG model  
-* Configure the retrieval pipeline to fetch relevant restaurant recommendations based on user queries  
-* Implement ranking logic to prioritize recommendations based on context (e.g., urgency, budget, preferences)
-
-**Potential Challenges:**
-
-* Data quality may vary based on available reviews  
-* Dining preferences are highly subjective  
-* Ethical considerations regarding web scraping and data usage
-
-**Alternative Approaches:**
-
-* Build a RAG system with data from the Penn Student Handbook for student-specific services.  
-* Aggregate information from Penn agencies or clubs to offer recommendations beyond dining (e.g., social events, activities).  
-* Expand the model to include local Philadelphia data such as housing, crime reports, or community resources.
-
-**Prompting Experiments & Development:**
-
-* Experiment with different prompting strategies for Watsonx to refine query responses (e.g., “What’s a quiet place for a study date under $30?” vs. “Suggest a fancy Italian restaurant”).  
-* Fine-tune retrieval mechanisms to balance relevancy and diversity in recommendations.  
-* Test user interactions with different user flows to refine response accuracy and user satisfaction.
-
-This project aims to provide an efficient tool for University City restaurant goers, making the decision making process more enjoyable and more efficient with AI-driven recommendations.
 
 
 
