@@ -1,5 +1,3 @@
-
-
 * Code is a little old and using langchain older version and not langgraph but
   it is worth taking a look at this repo
 
